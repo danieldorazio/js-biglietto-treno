@@ -12,40 +12,40 @@ console.log(userChilometri, userEtà);
 
 
 // LOGICA DEL PROGRAMMA
-const biglettoIntero = (userChilometri * prezzoBase) .toFixed(2) ;
+const biglettoIntero = (userChilometri * prezzoBase) .toFixed(2);
 console.log(biglettoIntero);
 let message = ""
 
-if (userEtà >= 65) {
+if ( !(userEtà < 18 || userEtà >= 65)) {
+    let biglietto = biglettoIntero;
+    console.log(biglietto);
+
+    message = 
+    `
+    <h2> Ciao ${userNome} !</h2>
+    <p> Il costo intero del biglietto per una tratta di ${userChilometri} km e di ${biglettoIntero} € </p>
+    `
+
+} else if (userEtà > 65) {
     let biglietto  = biglettoIntero - (biglettoIntero * scontoOver);
     biglietto = biglietto.toFixed(2);
 
     message = 
     `
-    <h2> Ciao ${userNome}!</h2>
+    <h2> Ciao ${userNome} !</h2>
     <p> Il costo intero del biglietto per una tratta di ${userChilometri} km e di ${biglettoIntero} € ma visto che te hai ${userEtà} anni hai diritto ad uno sconto del 40% </p>
     <p> Quindi il prezzo del biglietto con sconto applicato è di ${biglietto} €
     `
 
-} else if (userEtà <= 17) {
+} else if (userEtà < 18) {
     let biglietto = biglettoIntero - (biglettoIntero * scontoMinori);
     biglietto = biglietto.toFixed(2);
 
     message = 
     `
-    <h2> Ciao ${userNome}!</h2>
+    <h2> Ciao ${userNome} !</h2>
     <p> Il costo intero del biglietto per una tratta di ${userChilometri} km e di ${biglettoIntero} € ma visto che te hai ${userEtà} anni hai diritto ad uno sconto del 20% </p>
     <p> Quindi il prezzo del biglietto con sconto applicato è di ${biglietto} €
-    `
-
-} else {
-    let biglietto = biglettoIntero
-    biglietto = biglietto.toFixed(2);
-
-    message = 
-    `
-    <h2> Ciao ${userNome}!</h2>
-    <p> Il costo intero del biglietto per una tratta di ${userChilometri} km e di ${biglettoIntero} € </p>
     `
 }
 
